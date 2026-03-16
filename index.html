@@ -230,6 +230,60 @@ footer{border-top:1px solid rgba(212,169,50,0.1);padding:60px 5%;background:line
   .brand-divider img{width:100px;height:100px}
 }
 
+/* SPOTLIGHT / STAGE LIGHTING */
+.spotlight{position:absolute;width:300px;height:600px;pointer-events:none;z-index:1}
+.spotlight-left{top:-100px;left:5%;background:linear-gradient(180deg,rgba(212,169,50,0.12) 0%,transparent 100%);transform:rotate(-15deg);filter:blur(40px);animation:spotlightSway 8s ease-in-out infinite}
+.spotlight-right{top:-100px;right:5%;background:linear-gradient(180deg,rgba(212,169,50,0.1) 0%,transparent 100%);transform:rotate(15deg);filter:blur(40px);animation:spotlightSway 8s ease-in-out infinite reverse}
+.spotlight-center{top:-50px;left:50%;transform:translateX(-50%);width:500px;background:linear-gradient(180deg,rgba(212,169,50,0.08) 0%,transparent 80%);filter:blur(50px);animation:spotlightPulse 4s ease-in-out infinite}
+@keyframes spotlightSway{0%,100%{transform:rotate(-15deg) translateX(0)}50%{transform:rotate(-10deg) translateX(30px)}}
+@keyframes spotlightPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+
+/* LIGHT RAYS */
+.light-rays{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.light-ray{position:absolute;top:-20%;width:2px;height:140%;background:linear-gradient(180deg,transparent 0%,rgba(212,169,50,0.06) 30%,rgba(212,169,50,0.02) 70%,transparent 100%);transform-origin:top center}
+.light-ray:nth-child(1){left:15%;transform:rotate(-8deg);animation:rayFlicker 6s ease-in-out infinite}
+.light-ray:nth-child(2){left:35%;transform:rotate(-3deg);animation:rayFlicker 8s ease-in-out 1s infinite;width:3px}
+.light-ray:nth-child(3){left:50%;transform:rotate(0deg);animation:rayFlicker 5s ease-in-out 0.5s infinite;width:4px;background:linear-gradient(180deg,transparent 0%,rgba(212,169,50,0.1) 20%,rgba(212,169,50,0.03) 60%,transparent 100%)}
+.light-ray:nth-child(4){left:65%;transform:rotate(3deg);animation:rayFlicker 7s ease-in-out 2s infinite;width:3px}
+.light-ray:nth-child(5){left:85%;transform:rotate(8deg);animation:rayFlicker 9s ease-in-out 1.5s infinite}
+@keyframes rayFlicker{0%,100%{opacity:0.3}25%{opacity:0.8}50%{opacity:0.4}75%{opacity:1}}
+
+/* FLOATING PARTICLES */
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0;animation:particleFloat 12s ease-in-out infinite}
+.particle:nth-child(1){left:10%;animation-delay:0s;animation-duration:10s}
+.particle:nth-child(2){left:20%;animation-delay:2s;animation-duration:14s}
+.particle:nth-child(3){left:35%;animation-delay:4s;animation-duration:11s;width:2px;height:2px}
+.particle:nth-child(4){left:50%;animation-delay:1s;animation-duration:13s}
+.particle:nth-child(5){left:65%;animation-delay:3s;animation-duration:9s;width:4px;height:4px}
+.particle:nth-child(6){left:75%;animation-delay:5s;animation-duration:12s;width:2px;height:2px}
+.particle:nth-child(7){left:88%;animation-delay:2.5s;animation-duration:15s}
+.particle:nth-child(8){left:45%;animation-delay:6s;animation-duration:11s;width:2px;height:2px}
+@keyframes particleFloat{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:0.6}50%{opacity:0.3}90%{opacity:0.5}100%{transform:translateY(-20vh) scale(1);opacity:0}}
+
+/* LENS FLARE */
+.lens-flare{position:absolute;width:200px;height:200px;border-radius:50%;pointer-events:none;z-index:1}
+.lens-flare-1{top:20%;right:15%;background:radial-gradient(circle,rgba(212,169,50,0.15) 0%,rgba(212,169,50,0.05) 30%,transparent 70%);animation:flarePulse 6s ease-in-out infinite;filter:blur(20px)}
+.lens-flare-2{top:40%;left:10%;width:100px;height:100px;background:radial-gradient(circle,rgba(196,30,46,0.08) 0%,transparent 60%);animation:flarePulse 8s ease-in-out 2s infinite;filter:blur(15px)}
+@keyframes flarePulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+/* PRODUCT CARD SPOTLIGHT ON HOVER */
+.product-card::before{content:'';position:absolute;top:-50%;left:50%;width:100px;height:200%;background:linear-gradient(180deg,rgba(212,169,50,0.08) 0%,transparent 60%);transform:translateX(-50%);opacity:0;transition:opacity 0.5s;pointer-events:none;filter:blur(20px);z-index:0}
+.product-card:hover::before{opacity:1}
+
+/* COLLECTION SECTION STAGE LIGHTING */
+.section-stage{position:relative;overflow:hidden}
+.section-stage::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(212,169,50,0.06) 0%,transparent 70%);pointer-events:none;animation:stageLightBreathe 5s ease-in-out infinite}
+@keyframes stageLightBreathe{0%,100%{opacity:0.5;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.2)}}
+
+/* STORY SECTION GLOW */
+.story-glow{position:absolute;top:50%;left:25%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(212,169,50,0.1) 0%,transparent 60%);pointer-events:none;filter:blur(40px);animation:glowBreathe 6s ease-in-out infinite}
+@keyframes glowBreathe{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.9;transform:translate(-50%,-50%) scale(1.15)}}
+
+/* CTA SPOTLIGHT CONE */
+.cta-spotlight{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:250px solid transparent;border-right:250px solid transparent;border-top:500px solid rgba(212,169,50,0.04);pointer-events:none;filter:blur(30px);animation:ctaSpotlightPulse 5s ease-in-out infinite}
+@keyframes ctaSpotlightPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+
 @keyframes fadeUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
 </style>
 </head>
@@ -261,6 +315,13 @@ footer{border-top:1px solid rgba(212,169,50,0.1);padding:60px 5%;background:line
   <div class="hero-bg"><img src="images/king_lion_bg.png" alt="" loading="eager"></div>
   <div class="hero-pattern"></div>
   <div class="hero-overlay"></div>
+  <div class="light-rays"><div class="light-ray"></div><div class="light-ray"></div><div class="light-ray"></div><div class="light-ray"></div><div class="light-ray"></div></div>
+  <div class="spotlight spotlight-left"></div>
+  <div class="spotlight spotlight-right"></div>
+  <div class="spotlight spotlight-center"></div>
+  <div class="lens-flare lens-flare-1"></div>
+  <div class="lens-flare lens-flare-2"></div>
+  <div class="particles"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
   <div class="hero-lion"><img src="images/king_lion_transparent.png" alt=""></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Designed in Great Britain</div>
@@ -292,7 +353,7 @@ footer{border-top:1px solid rgba(212,169,50,0.1);padding:60px 5%;background:line
 </div>
 
 <!-- COLLECTION -->
-<section class="section" id="collection">
+<section class="section section-stage" id="collection">
   <div class="section-header reveal">
     <div class="section-eyebrow">The Collection</div>
     <div class="gold-line"></div>
@@ -327,7 +388,8 @@ footer{border-top:1px solid rgba(212,169,50,0.1);padding:60px 5%;background:line
 </div>
 
 <!-- STORY -->
-<section class="story" id="story">
+<section class="story" id="story" style="position:relative;overflow:hidden">
+  <div class="story-glow"></div>
   <div class="story-img reveal">
     <img src="images/king_lion_transparent.png" alt="King Lion">
   </div>
@@ -346,6 +408,8 @@ footer{border-top:1px solid rgba(212,169,50,0.1);padding:60px 5%;background:line
   <div class="cta-bg"><img src="images/king_lion_bg.png" alt="" loading="lazy"></div>
   <div class="cta-pattern"></div>
   <div class="cta-overlay"></div>
+  <div class="cta-spotlight"></div>
+  <div class="particles" style="z-index:1"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
   <div class="cta-inner reveal">
     <div class="section-eyebrow">Secure Yours</div>
     <div class="gold-line"></div>
